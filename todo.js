@@ -1,0 +1,26 @@
+function onClickHandler(){
+    console.log(document.querySelector('#newtask'));
+    if(document.querySelector('#newtask').value.length === 0){
+        alert("Please Enter a Task")
+    }
+    else{
+        document.querySelector('#tasks').innerHTML += `
+            <div class="task">
+                <span id="taskname">
+                    ${document.querySelector('#newtask').value}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+        `;
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+    }
+}
+console.log(document.querySelector('.push'));
+document.querySelector('.push').onclick = onClickHandler
